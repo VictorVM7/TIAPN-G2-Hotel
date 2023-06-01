@@ -21,7 +21,7 @@ const User = db.define('User', {
 });
 
 // Cria tabela caso não exista a tabela
-//User.sync();
+User.sync();
 
 // Altera a tabela de acordo com as mudanças que houver na estrutura,s e houver.
 //User.sync({alter: true});

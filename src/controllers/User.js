@@ -4,18 +4,15 @@ const mysql = require('../models/db');
 
 // POST - Cadastra usuário
 exports.postUser = async (req, res) => {
-    await user.create(req.body)
-        .then(() => {
-            return res.status(200).json({
-                erro: false,
-                mensagem: "Usuário cadastrado com sucesso"
-            })
-        }).catch(() => {
-            return res.status(400).json({
-                erro: true,
-                mensagem: "Erro: usuário não cadastrado!"
-            })
-        })
+    const { email } = req.body
+    const usuario = await user.findOne({ where: { email } })
+    if (usuario == null) {
+        await user.create(req.body)
+        res.status(200).json({ message: true })
+    }
+    else {
+        res.status(401).json({ message: false })
+    }
 };
 
 // GET - Retorna todos os usuários cadastrados 
@@ -40,6 +37,10 @@ exports.deleteUser = async (req, res) => {
         const usuario = await user.destroy({ where: { id } })
         res.status(200).json({ ok: true })
     }
+}
+
+exports.updateUser = async (req, res) => {
+
 }
 
 
