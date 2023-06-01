@@ -1,24 +1,11 @@
 // Classes importadas
 const express = require('express');
-const user = require('./controller/User');
-
+const routes = require('./src/routes/Routes');
+const user = require('./src/controllers/User');
 const app = express();
+
 app.use(express.json());
-
-
-/*EndPoints */ 
-
-// Caminho raiz / await só pode ser usado se houver "async"
-app.get("/", async (req, res) => {
-    res.send("Página Inicial Teste");
-});
-
-app.post("/cadastrar", user.postUser);    // Cadastrar Usuário com método do controller User.js
-/*
-app.get("/recuperar", user.getUser);      // Cadastrar Usuário com método do controller User.js
-app.put("/atualizar", user.putUser);      // Cadastrar Usuário com método do controller User.js
-app.delete("/deletar", user.deleteUser);  // Cadastrar Usuário com método do controller User.js
-*/
+app.use("/", routes);
 
 // Porta que está executando o projeto
 app.listen(8080, () => {

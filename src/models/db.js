@@ -15,4 +15,4 @@ sequelize.authenticate()
 });
 
 // Exporta conexão com o banco
-module.exports = sequelize;
+module.exports = sequelize
