@@ -77,11 +77,11 @@ exports.updateUser = async (req, res) => {
 
     try {
         const usuario = await user.findOne({ where: { id } })
-        
+
         if (!user) {
-            res.status(401).json({ message: "Nenhum usuário encontrado" })
-        } else {
             const usuario = await user.update({ name, email },)
+        } else {
+            res.status(401).json({ message: "Nenhum usuário encontrado" })
         }
     } catch (error) {
         res.status(401).json({ message: error })
