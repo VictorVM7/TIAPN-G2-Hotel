@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<!-- Links (Conexões com CSS ou outras fontes) -->
+	<link rel="stylesheet" href="src/assets/Style/VerReserva.css">
+    <!-- Link para Favicon (imagem que fica na aba) -->
+    <link rel="shortcut icon" href="src/assets/Images/fav/favicon.ico" type="image/x-icon" />
+	<!-- Font Awesome -->
+	<script src="https://kit.fontawesome.com/1130775dd0.js" crossorigin="anonymous"></script>
+	<!-- Toggle Button -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+	<!-- Título da Tela (Apresentado na Aba em Cima) -->
+	<title>Califórnia.System | Realizar Reserva</title>
+</head>
+
+<!-- HEADER (CABEÇALHO) ↓↓↓ -->
+<header>
+	<div class="navbar">
+		<div class="logo">
+			<a href="#">Califórnia.System</a>
+		</div>
+		<div class="user">
+			<li>
+				<p>Nome do Usuário</p>
+				<p>Tipo do Usuário</p>
+			</li>
+			<i class="fa-sharp fa-solid fa-circle-user"></i>
+		</div>
+		<div class="toggle-btn">
+			<i class="fa-solid fa-bars"></i>
+		</div>
+	</div>
+	<div class="dropdown-menu">
+		<li>
+			<a href="Login.html">Logout</a>
+		</li>
+	</div>
+</header>
+
+
+<body>
+
+<!-- TABLE (TABELA RESERVAS EM ANDAMENTO) -->
+<div class="table-area">
+    <main class="table">
+        <section class="table__header">
+            <h1>Reservas em Andamento</h1>
+            <a href="Main.html">Voltar</a>
+        </section>
+        <section class="table__body">
+            <table>
+                <thead>
+                    <tr>
+                        <th> ID </th>
+                        <th> Localização </th>
+                        <th> Tipo </th>
+                        <th> Data </th>
+                        <th> Status </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td> 1 </td>
+                        <td> 2 Andar - Quarto 222 </td>
+                        <td>Casal</td>
+                        <td> 25 Maio de 2023 </td>
+                        <td>
+                            <p class="status delivered">Livre</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td> 1 </td>
+                        <td> 6 Andar - Quarto 666 </td>
+                        <td>Solteiro</td>
+                        <td> 13 Abril 2023 </td>
+                        <td>
+                            <p class="status pending">Ocupado</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td> 1 </td>
+                        <td> 4 Andar - Quarto 444 </td>
+                        <td>Casal</td>
+                        <td> 20 Janeiro de 2023 </td>
+                        <td>
+                            <p class="status end">Finalizada</p>
+                        </td>
+                    </tr>                
+                </tbody>
+            </table>
+        </section>
+    </main>
+</div>
+
+<!-- FOOTER (RODAPÉ) ↓↓↓ -->
+	<footer>
+		<div class="footer-content">
+			<p>All Rights Reserved to System.California </p>
+		</div>
+	</footer>
+
+<!-- MENU HOVER ↓↓↓ -->
+	<script>
+		const toggleBtn = document.querySelector('.toggle-btn')
+		const toggleBtnIcon = document.querySelector('.toggle-btn i')
+		const dropDownMenu = document.querySelector('.dropdown-menu')
+
+		toggleBtn.onclick = function() {
+			dropDownMenu.classList.toggle('open')
+			const isOpen = dropDownMenu.classList.contains('open')
+
+			toggleBtnIcon.classList = isOpen
+				? 'fa-solid fa-xmark'
+				: 'fa-solid fa-bars'
+		}
+	</script> 
+
+</body>
+
+</html>

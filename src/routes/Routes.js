@@ -33,6 +33,4 @@ select count(distinct(E.CodUsu))
 			       on OB.CodObr = EM.CodObr
 				where OB.NomObr = 'Sistemas de Banco de Dados'
 				  and E.CodUsu = EM.CodUsu)
-
-
 */ 

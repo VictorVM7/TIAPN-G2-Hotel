@@ -1,0 +1,63 @@
+@import "GlobalStyles.css";
+
+
+.cards-area{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex: 1;
+}
+
+main.cards{
+    display: flex;
+    padding: 32px;
+    justify-content: space-around;
+}
+
+main.cards section.card{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    background: var(--White);
+    padding: 1rem 1.5rem;
+    border-radius: 8px;
+    max-height: 468px;
+    margin-left: 32px;
+    min-width: 170px;
+}
+
+main.cards section.card:first-child{
+    margin-left: 0;
+}
+
+main.cards section.card h3{
+    margin: 16px 0;
+}
+
+main.cards section.card button{
+   padding: 0.5rem 1rem;
+   border-radius: 32px;
+   border: 0;
+   cursor: pointer;
+   font-size: 80%;
+   background-color: var(--Azul-Escuro);
+   width: 100%;
+   font-weight: 500;
+   margin: 0 0 10px 0;
+}
+
+@media (max-width: 1050px) {
+    main.cards{
+        flex-direction: column;
+    }
+    main.cards section.card{
+        margin-left: 0;
+        margin-bottom: 32px;
+    }
+
+    main.cards section.card:last-child{
+        margin-bottom: 0;
+    }
+}
