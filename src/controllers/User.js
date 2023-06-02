@@ -18,23 +18,23 @@ exports.postUser = async (req, res) => {
 };
 
 // GET - Retorna todos os usuários cadastrados 
-exports.getUser = async (req, res) => {
+exports.getAllUser = async (req, res) => {
     try {
         const usuario = await user.findAll();
 
-        if(!usuario){
+        if (!usuario) {
             res.status(400).json({ message: "Nenhum usuário encontrado" })
         } else {
             res.status(200).json({ usuario })
         }
-        
+
     } catch (error) {
         res.status(400).json({ error })
     }
 };
 
 // GET - Retorna somente um usuário escolhido
-exports.getUser = async (req, res) => {
+exports.getOneUser = async (req, res) => {
     const { id } = req.params
     const { name, email } = req.body
 
@@ -72,16 +72,17 @@ exports.deleteUser = async (req, res) => {
 
 // UPDATE - Altera algum dado do usuário
 exports.updateUser = async (req, res) => {
-    const { id } = req.params
-    const { name, email } = req.body
-
     try {
+        const { id } = req.params
+        const { name, email } = req.body
+
         const usuario = await user.findOne({ where: { id } })
 
-        if (!user) {
-            const usuario = await user.update({ name, email },)
-        } else {
+        if (!usuario) {
             res.status(401).json({ message: "Nenhum usuário encontrado" })
+        } else {
+            const usuario = await user.update({ name, email }, { where: { id } })
+            res.status(200).json({ usuario })
         }
     } catch (error) {
         res.status(401).json({ message: error })
