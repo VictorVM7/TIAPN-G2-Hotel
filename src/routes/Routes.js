@@ -1,13 +1,20 @@
 const { Router } = require("express");
-const UserController = require('../controllers/User')
+const ClienteController = require('../controllers/Cliente')
 
 const router = Router()
 
-// Rotas do User
-router.get('/', UserController.getAllUser)
-router.post('/user-create', UserController.postUser)
-router.delete('/user-delete/:id', UserController.deleteUser)
-router.put('/user-update/:id', UserController.updateUser)
+router.get("/cadastro", function(req, res){
+  res.sendFile("C:\\Users\\ti\\Desktop\\TIAPN-G2-Hotel\\TelaCadastroCliente.html")
+});
+
+
+// Rotas do Cliente
+router.get('/', ClienteController.getAllCliente)
+router.post('/cadastrarUsuario', ClienteController.postCliente)
+router.delete('/', ClienteController.deleteCliente)
+router.put('/', ClienteController.updateCliente)
+
+
 
 // Exportar
 module.exports = router;

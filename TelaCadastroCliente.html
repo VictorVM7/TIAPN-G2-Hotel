@@ -11,6 +11,7 @@
     <link rel="shortcut icon" href="src/assets/Images/fav/favicon.ico" type="image/x-icon" />
 	<!-- Font Awesome -->
 	<script src="https://kit.fontawesome.com/1130775dd0.js" crossorigin="anonymous"></script>
+	<script type="module" src="app.js"></script>
 	<!-- Toggle Button -->
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 	<!-- Título da Tela (Apresentado na Aba em Cima) -->
@@ -52,31 +53,27 @@
 		<div class="subtitle">
 			<p>Para realizar o cadastro do cliente basta preencher as seguintes informações:</p>
 		</div>
-		<form>
+		<form action="/cadastrarUsuario" method="POST">
 			<div class="fill">
 				<div class="input-box">
 					<span class="detailsText">Nome do Cliente:</span>
-					<input type="text" placeholder="Digite o Nome do Cliente" required>
+					<input type="text" name="CliNome" placeholder="Digite o Nome do Cliente" required>
 				</div>
 				<div class="input-box">
 					<span class="detailsText">Telefone:</span>
-					<input type="text" placeholder="Digite o Telefone do Cliente" required>
+					<input type="text" name="CliTelefone" placeholder="Digite o Telefone do Cliente" required>
 				</div>
 				<div class="input-box">
 					<span class="detailsText">Idade:</span>
-					<input type="text" placeholder="Digite a Idade do Cliente" required>
-				</div>
-				<div class="input-box">
-					<span class="detailsText">Endereço:</span>
-					<input type="text" placeholder="Digite o Endereço do Cliente" required>
+					<input type="text" name="CliIdade" placeholder="Digite a Idade do Cliente" required>
 				</div>
                 <div class="input-box">
 					<span class="detailsText">CPF:</span>
-					<input type="text" placeholder="Digite o CPF do Cliente" required>
+					<input type="text" name="CliCPF" placeholder="Digite o CPF do Cliente" required>
 				</div>
                 <div class="input-box">
 					<span class="detailsText">Sexo:</span>
-					<input type="text" placeholder="Digite o Sexo do Cliente" required>
+					<input type="text" name="CliSexo" placeholder="Digite o Sexo do Cliente" required>
 				</div>
 			</div>
 			<div class="button">
