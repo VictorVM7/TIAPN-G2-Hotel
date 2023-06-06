@@ -10,13 +10,13 @@ exports.postCliente = async (req, res) => {
 
         if (cliente == null) {
             await Cliente.create(req.body)
-            res.status(200).json({ message: true })
+            res.status(200).json({message: true})
         }
         else {
-            res.status(400).json({ message: "Esse cliente já está cadastrado" })
+            res.status(200).json({message: false})
         }
     } catch (error) {
-        res.status(401).json({ message: error })
+        res.status(401).json({message: false})
     }
 };
 
