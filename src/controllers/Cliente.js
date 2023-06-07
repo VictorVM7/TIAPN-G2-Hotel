@@ -1,22 +1,27 @@
 // Importa modelo Cliente.js de Models
+const { or } = require('sequelize');
 const Cliente = require('../models/Cliente');
 const mysql = require('../models/db');
-
 // POST - Cadastra usuário
 exports.postCliente = async (req, res) => {
-    const { CliCPF } = req.body
-    try {
-        const cliente = await Cliente.findOne({ where: { CliCPF } })
-
-        if (cliente == null) {
-            await Cliente.create(req.body)
-            res.status(200).json({message: true})
-        }
-        else {
-            res.status(200).json({message: false})
-        }
-    } catch (error) {
+    const { CliCPF, CliNome, CliSexo, CliTelefone, CliIdade } = req.body
+    if ( CliCPF == null || CliNome == null || CliSexo == null || CliTelefone == null || CliIdade == null ){
         res.status(401).json({message: false})
+    } else {
+        try {
+            const cliente = await Cliente.findOne({ where: { CliCPF } })
+    
+            if (cliente == null) {
+                await Cliente.create(req.body)
+                alert("Olá")
+                res.status(200)
+            }
+            else {
+                res.status(200).json({message: false})
+            }
+        } catch (error) {
+            res.status(401).json({message: false, error: error})
+        }
     }
 };
 

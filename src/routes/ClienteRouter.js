@@ -3,14 +3,14 @@ const ClienteController = require('../controllers/Cliente')
 const ClienteRouter = Router()
 const Path = "C:\\Users\\victo\\OneDrive\\Área de Trabalho\\TIAPN-G2-Hotel\\views\\"
 
-ClienteRouter.get("/", function(req, res){
+ClienteRouter.get("/cadastroCliente", function(req, res){
   res.sendFile(Path + "TelaCadastroCliente.html")
 });
 
 
 // Rotas do Cliente
 ClienteRouter.get('/get', ClienteController.getAllCliente)
-ClienteRouter.post('/cadastrarCliente', ClienteController.postCliente)
+ClienteRouter.post('/cadastrar', ClienteController.postCliente)
 ClienteRouter.delete('/delete', ClienteController.deleteCliente)
 ClienteRouter.put('/update', ClienteController.updateCliente)
 
