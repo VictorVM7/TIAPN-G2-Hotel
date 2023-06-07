@@ -106,11 +106,11 @@
 		const toggleBtnIcon = document.querySelector('.toggle-btn i')
 		const dropDownMenu = document.querySelector('.dropdown-menu')
 
-		const ClienteNome = document.querySelector("ClienteNome").value
-		const TelefoneCliente = document.querySelector('TelefoneCliente')
-		const IdadeCliente = document.querySelector('IdadeCliente')
-		const CpfCliente = document.querySelector('CpfCliente')
-		const Sexo = document.querySelector('Sexo')
+		const ClienteNome = document.querySelector("#ClienteNome")
+		const TelefoneCliente = document.querySelector('#TelefoneCliente')
+		const IdadeCliente = document.querySelector('#IdadeCliente')
+		const CpfCliente = document.querySelector('#CpfCliente')
+		const Sexo = document.querySelector('#Sexo')
 			
 		toggleBtn.onclick = function() {
 			dropDownMenu.classList.toggle('open')
@@ -125,8 +125,8 @@
 		
 		let popup = document.getElementById("popup");
 
-		function openPopup(){
-			if(ClienteNome. == null){
+		function openPopup(ClienteNome){
+			if(ClienteNome == null){
 				window.alert("Opa")
 			} else {
 				popup.classList.add("open-popup");

@@ -1,5 +1,5 @@
 // Classes importadas
-const ClienteRouter = require('./src/routes/ClienteRouter');
+const ClienteRouter = require('./src/routes/ClienteRoutes');
 const bodyParser = require('body-parser');
 const Cliente = require('./src/models/Cliente');
 
