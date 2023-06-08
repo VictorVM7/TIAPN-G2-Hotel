@@ -15,10 +15,10 @@ ClienteRouter.get("/cadastro", function(req, res){
 });
 
 // Rotas do Cliente
-ClienteRouter.get('/', ClienteController.getAllCliente)
-ClienteRouter.post('/cadastrarUsuario', ClienteController.postCliente)
-ClienteRouter.delete('/', ClienteController.deleteCliente)
-ClienteRouter.put('/', ClienteController.updateCliente)
+ClienteRouter.get('/cadastro/get', ClienteController.getAllCliente)
+ClienteRouter.post('/cadastro/cadastrar-cliente', ClienteController.postCliente)
+ClienteRouter.delete('/delete', ClienteController.deleteCliente)
+ClienteRouter.put('/put', ClienteController.updateCliente)
 
 // Exportar
 module.exports = ClienteRouter;

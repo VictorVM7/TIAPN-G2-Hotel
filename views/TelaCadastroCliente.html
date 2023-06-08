@@ -11,7 +11,7 @@
     <link rel="shortcut icon" href="src/assets/Images/fav/favicon.ico" type="image/x-icon" />
 	<!-- Font Awesome -->
 	<script src="https://kit.fontawesome.com/1130775dd0.js" crossorigin="anonymous"></script>
-	<script type="module" src="app.js"></script>
+	<script type="module" src="/app.js"></script>
 	<!-- Toggle Button -->
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 	<!-- Título da Tela (Apresentado na Aba em Cima) -->
@@ -53,27 +53,27 @@
 		<div class="subtitle">
 			<p>Para realizar o cadastro do cliente basta preencher as seguintes informações:</p>
 		</div>
-		<form action="/cadastrarCliente" method="POST">
+		<form action="cadastro/cadastrar-cliente" method="POST">
 			<div class="fill">
 				<div class="input-box">
 					<span class="detailsText">Nome do Cliente:</span>
-					<input type="text" class="ClienteNome" name="CliNome" placeholder="Digite o Nome do Cliente" required>
+					<input type="text" id="ClienteNome" name="CliNome" placeholder="Digite o Nome do Cliente" required>
 				</div>
 				<div class="input-box">
 					<span class="detailsText">Telefone:</span>
-					<input type="text" class="TelefoneCliente" name="CliTelefone" placeholder="Digite o Telefone do Cliente" required>
+					<input type="text" id="ClienteNome" name="CliTelefone" placeholder="Digite o Telefone do Cliente" required>
 				</div>
 				<div class="input-box">
 					<span class="detailsText">Idade:</span>
-					<input type="text" class="IdadeCliente" name="CliIdade" placeholder="Digite a Idade do Cliente" required>
+					<input type="text" id="ClienteNome" name="CliIdade" placeholder="Digite a Idade do Cliente" required>
 				</div>
                 <div class="input-box">
 					<span class="detailsText">CPF:</span>
-					<input type="text" class="CpfCliente" name="CliCPF" placeholder="Digite o CPF do Cliente" required>
+					<input type="text" id="ClienteNome" name="CliCPF" placeholder="Digite o CPF do Cliente" required>
 				</div>
                 <div class="input-box">
 					<span class="detailsText">Sexo:</span>
-					<input type="text" class="Sexo" name="CliSexo" placeholder="Digite o Sexo do Cliente" required>
+					<input type="text" id="ClienteNome" name="CliSexo" placeholder="Digite o Sexo do Cliente" required>
 				</div>
 			</div>
 			<div class="button">
@@ -105,12 +105,6 @@
 		const toggleBtn = document.querySelector('.toggle-btn')
 		const toggleBtnIcon = document.querySelector('.toggle-btn i')
 		const dropDownMenu = document.querySelector('.dropdown-menu')
-
-		const ClienteNome = document.querySelector("#ClienteNome")
-		const TelefoneCliente = document.querySelector('#TelefoneCliente')
-		const IdadeCliente = document.querySelector('#IdadeCliente')
-		const CpfCliente = document.querySelector('#CpfCliente')
-		const Sexo = document.querySelector('#Sexo')
 			
 		toggleBtn.onclick = function() {
 			dropDownMenu.classList.toggle('open')
@@ -122,16 +116,18 @@
 		}
 
 		// POPUP
-		
 		let popup = document.getElementById("popup");
+		let nome = document.getElementById('ClienteNome').value;
 
-		function openPopup(ClienteNome){
-			if(ClienteNome == null){
-				window.alert("Opa")
-			} else {
+		function openPopup(nome){
+			if(nome == null){
+				window.alert("Oi")
+			} else{
 				popup.classList.add("open-popup");
-			}	
+			}
 		}
+		
+		
 		function closePopup(){
 			popup.classList.remove("open-popup");
 		}
