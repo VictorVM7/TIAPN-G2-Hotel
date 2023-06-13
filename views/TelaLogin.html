@@ -6,9 +6,9 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<!-- Links (Conexões com CSS ou outras fontes) -->
-	<link rel="stylesheet" href="src/assets/Style/Login.css">
+	<link type="text/css" rel="stylesheet" href="/Style/Login.css">
     <!-- Link para Favicon (imagem que fica na aba) -->
-    <link rel="shortcut icon" href="src/assets/Images/fav/favicon.ico" type="image/x-icon" />
+    <link rel="shortcut icon" href="Images/fav/favicon.ico" type="image/x-icon" />
 	<!-- Font Awesome -->
 	<script src="https://kit.fontawesome.com/1130775dd0.js" crossorigin="anonymous"></script>
 	<!-- Título da Tela (Apresentado na Aba em Cima) -->
@@ -18,32 +18,32 @@
 <body>
 	<!-- Particle JS (BackGround) -->
 	<div id="particles-js"></div>
-	<script type="text/javascript" src="src/assets/JavaScript/ParticleBG/particles.js"></script>
-	<script type="text/javascript" src="src/assets/JavaScript/ParticleBG/app.js"></script>
+	<script type="text/javascript" src="/JavaScript/ParticleBG/particles.js"></script>
+	<script type="text/javascript" src="/JavaScript/ParticleBG/app.js"></script>
 
 	<!-- Box Login -->
 	<div class="container">
-		<img src="src/assets/Images/LoginIMG.png" alt="Bem Vindo ao System.Califórnia">
+		<img src="/Images/LoginIMG.png" alt="Bem Vindo ao System.Califórnia">
 		<div class="loginDesign">
 		</div>
 
-		<div class="loginContet">
+		<form action="/login/logar" class="loginContet" method="post">
 			<h2 class="title">Login</h2>
 			<!-- Box User -->
 			<div class="text-input">
 				<i class="fa-solid fa-user-tie" style="color: #083359;"></i>
-				<input type="text" placeholder="Usuário">
+				<input type="text" placeholder="Usuário" name="FuncLogin">
 			</div>
 			<!-- Box Password -->
 			<div class="text-input">
 				<i class="fa-solid fa-lock" style="color: #083359;"></i>
-				<input type="password" placeholder="Senha">
+				<input type="password" placeholder="Senha" name="FuncSenha">
 			</div>
 			<!-- Button -->
-			<button class="login-btn">
-				<a href="TelaMain.html">Acessar</a>
+			<button class="login-btn" type="submit" name="acao">
+				<a>Acessar</a>
 			</button>
-		</div>
+		</form>
 	</div>
 
 </body>
