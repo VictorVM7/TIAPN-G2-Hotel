@@ -6,9 +6,9 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<!-- Links (Conexões com CSS ou outras fontes) -->
-	<link rel="stylesheet" href="/src/assets/Style/Default.css">
+	<link type="text/css" rel="stylesheet" href="/Style/Default.css">
     <!-- Link para Favicon (imagem que fica na aba) -->
-    <link rel="shortcut icon" href="src/assets/Images/fav/favicon.ico" type="image/x-icon" />
+    <link rel="shortcut icon" href="/Images/fav/favicon.ico" type="image/x-icon" />
 	<!-- Font Awesome -->
 	<script src="https://kit.fontawesome.com/1130775dd0.js" crossorigin="anonymous"></script>
 	<!-- Toggle Button -->
@@ -34,9 +34,9 @@
 			<i class="fa-solid fa-bars"></i>
 		</div>
 	</div>
-	<div class="dropdown-menu">
+	<div>
 		<li>
-			<a href="TelaLogin.html">Logout</a>
+			<a onclick="window.location.href='/login'">Logout</a>
 		</li>
 	</div>
 </header>
@@ -52,43 +52,39 @@
 		<div class="subtitle">
 			<p>Para realizar o cadastro do funcionário basta preencher as seguintes informações:</p>
 		</div>
-		<form>
+		<form action="/cadastroFuncionario" method="POST">
 			<div class="fill">
 				<div class="input-box">
 					<span class="detailsText">Nome do Funcionário:</span>
-					<input type="text" placeholder="Digite o Nome do Funcionário" required>
-				</div>
-				<div class="input-box">
-					<span class="detailsText">Telefone:</span>
-					<input type="text" placeholder="Digite o Telefone do Funcionário" required>
+					<input type="text"  name="FuncNome" placeholder="Digite o Nome do Funcionário" required>
 				</div>
 				<div class="input-box">
 					<span class="detailsText">Idade:</span>
-					<input type="text" placeholder="Digite a Idade do Funcionário" required>
+					<input type="text"  name="FuncIdade" placeholder="Digite a Idade do Funcionário" required>
 				</div>
 				<div class="input-box">
 					<span class="detailsText">CPF:</span>
-					<input type="text" placeholder="Digite o CPF do Funcionário" required>
+					<input type="text"  name="FuncCPF" placeholder="Digite o CPF do Funcionário" required>
 				</div>
                 <div class="input-box">
 					<span class="detailsText">Sexo:</span>
-					<input type="text" placeholder="Digite o Sexo do Funcionário" required>
+					<input type="text"  name="FuncSexo" placeholder="Digite o Sexo do Funcionário" required>
 				</div>
                 <div class="input-box">
 					<span class="detailsText">Login:</span>
-					<input type="text" placeholder="Digite o Login / Usuário" required>
+					<input type="text"  name="FuncLogin" placeholder="Digite o Login / Usuário" required>
 				</div>
                 <div class="input-box">
 					<span class="detailsText">Senha:</span>
-					<input type="password" placeholder="Digite a Senha" required>
+					<input type="password"  name="FuncSenha" placeholder="Digite a Senha" required>
 				</div>
 			</div>
 			<div class="button">
-				<button class="btnBack"> 
-					<a href="Main.html">Voltar</a>
+				<button class="btnBack" onclick="window.location.href='/menuPrincipal'">
+					<a>Voltar</a>
 				</button>
 				<button class="btnRegister" type="submit" onclick="openPopup()">
-					<a href="#">Cadastrar</a>
+					<a>Cadastrar</a>
 				</button>	
 				<div class="popup" id="popup">
 					<i class="fa-sharp fa-solid fa-circle-check fa-5x"></i>

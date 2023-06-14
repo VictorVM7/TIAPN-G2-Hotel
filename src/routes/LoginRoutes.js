@@ -25,7 +25,7 @@ LoginRouter.get("/login", function(req, res){
 });
 
 // Rotas do Login
-LoginRouter.post('/login', LoginController.getOneFunc)
+LoginRouter.post('/menuPrincipal', LoginController.getOneFunc)
 
 // Exportar
 module.exports = LoginRouter;

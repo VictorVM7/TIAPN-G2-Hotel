@@ -1,16 +1,16 @@
-// Importa modelo Cliente.js de Models
-const Cliente = require('../models/Cliente');
+// Importa modelo Funcionario.js de Models
+const Funcionario = require('../models/Funcionario');
 
 // POST - Cadastra usuário
-exports.postCliente = async (req, res) => {
-    const { CliCPF } = req.body
+exports.postFuncionario = async (req, res) => {
+    const { FuncLogin } = req.body
     try {
-        const cliente = await Cliente.findOne({ where: { CliCPF } })
-        if (cliente) {
-            res.status(400).json({messagem: false})
+        const funcionario = await Funcionario.findOne({ where: { FuncLogin } })
+        if (funcionario) {
+            res.status(204).json({messagem: false})
         } else {
-            await Cliente.create(req.body)         
-            res.status(200).end()         
+            await Funcionario.create(req.body)         
+            res.status(204).end()         
         }
     } catch (error) {
         res.status(401)
@@ -18,14 +18,14 @@ exports.postCliente = async (req, res) => {
 };
 
 // GET - Retorna todos os usuários cadastrados 
-exports.getAllCliente = async (req, res) => {
+exports.getAllFuncionario = async (req, res) => {
     try {
-        const cliente = await Cliente.findAll();
+        const funcionario = await Funcionario.findAll();
 
-        if (!cliente) {
+        if (!funcionario) {
             res.status(400).json({ message: "Nenhum usuário encontrado" })
         } else {
-            res.status(200).json({ cliente })
+            res.status(200).json({ funcionario })
         }
 
     } catch (error) {
@@ -34,17 +34,17 @@ exports.getAllCliente = async (req, res) => {
 };
 
 // GET - Retorna somente um usuário escolhido
-exports.getOneCliente = async (req, res) => {
+exports.getOneFuncionario = async (req, res) => {
     const { ID } = req.params
     const { CliCPF } = req.body
 
     try {
-        const cliente = await Cliente.findOne({ where: { CliCPF } })
+        const funcionario = await Funcionario.findOne({ where: { CliCPF } })
 
-        if (!cliente) {
+        if (!funcionario) {
             res.status(400).json({ message: "Usuário não encontrado!" })
         } else {
-            res.status(200).json({ cliente })
+            res.status(200).json({ funcionario })
         }
     } catch (error) {
         res.status(400).json({ error })
@@ -52,13 +52,13 @@ exports.getOneCliente = async (req, res) => {
 };
 
 // DELETE - Deleta usuário
-exports.deleteCliente = async (req, res) => {
+exports.deleteFuncionario = async (req, res) => {
     const { ID } = req.body
 
     try {
-        const cliente = await Cliente.findOne({ where: { ID } })
+        const funcionario = await Funcionario.findOne({ where: { ID } })
 
-        if (!cliente) {
+        if (!funcionario) {
             res.status(401).json({ message: "Usuário não encontrado!" })
         }
         else {
@@ -70,18 +70,18 @@ exports.deleteCliente = async (req, res) => {
 }
 
 // UPDATE - Altera algum dado do usuário
-exports.updateCliente = async (req, res) => {
+exports.updateFuncionario = async (req, res) => {
     const { ID } = req.body
-    const { CliCPF, CliNome, CliSexo, CliTelefone } = req.body
+    const { FuncLogin, FuncSenha, FuncNome, FuncIdade, FuncCPF } = req.body
     
     try {
-        const cliente = await Cliente.findOne({ where: { ID } })
+        const funcionario = await Funcionario.findOne({ where: { ID } })
 
-        if (!cliente) {
+        if (!funcionario) {
             res.status(401).json({ message: "Nenhum usuário encontrado" })
         } else {
-            const cliente = await Cliente.update({ CliCPF, CliNome, CliSexo, CliTelefone }, { where: { ID } })
-            res.status(200).json({ cliente })
+            const funcionario = await Funcionario.update({ FuncLogin, FuncSenha, FuncNome, FuncIdade, FuncCPF }, { where: { ID } })
+            res.status(200).json({ funcionario })
         }
     } catch (error) {
         res.status(401).json({ message: error })

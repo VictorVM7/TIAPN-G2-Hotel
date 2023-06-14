@@ -7,13 +7,13 @@ exports.postCliente = async (req, res) => {
     try {
         const cliente = await Cliente.findOne({ where: { CliCPF } })
         if (cliente) {
-            res.status(400).json({messagem: false})
+            res.status(202).json({messagem: false})
         } else {
             await Cliente.create(req.body)         
-            res.status(200).end()         
+            res.status(202).end()         
         }
     } catch (error) {
-        res.status(401)
+        res.status(202)
     }
 };
 

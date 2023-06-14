@@ -29,6 +29,10 @@ const Funcionario = db.define('Funcionario', {
     FuncCPF: {
         type: Sequelize.STRING,
         allowNull: false,
+    },
+    FuncSexo: {
+        type: Sequelize.STRING,
+        allowNull: false,
     }
 });
 
@@ -36,7 +40,7 @@ const Funcionario = db.define('Funcionario', {
 Funcionario.sync();
 
 // Altera a tabela de acordo com as mudanças que houver na estrutura,s e houver.
-// Cliente.sync({alter: true});
+//Funcionario.sync({alter: true});
 
 // Exporta a constante DB referente 
 module.exports = Funcionario;

@@ -14,8 +14,6 @@ const bodyParser = require('body-parser');
 app.use(bodyParser.urlencoded({extended: true}))
 app.use(bodyParser.json())
 
-// Controller
-const LoginController = require('../controllers/Login');
 
 // Routes
 const TelaPath = path.join(__dirname + "..", "..", "..","views", "TelaLogin.html")
@@ -37,5 +35,4 @@ exports.getOneFunc = async (req, res) => {
     } else {
         res.sendFile(TelaPath)
     }
-
 };

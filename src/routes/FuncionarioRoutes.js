@@ -3,22 +3,22 @@ const { Router } = require("express");
 const path = require('path')
 
 // Controller
-const ClienteController = require('../controllers/Cliente')
+const FuncionarioController = require('../controllers/Funcionario')
 
 // Routes
-const ClienteRouter = Router()
+const FuncionarioRouter = Router()
 
 // Página HTML
-ClienteRouter.get("/cadastro", function(req, res){
-  const TelaPath = path.join(__dirname + "..", "..", "..","views", "TelaCadastroCliente.html")
+FuncionarioRouter.get("/cadastroFuncionario", function(req, res){
+  const TelaPath = path.join(__dirname + "..", "..", "..","views", "TelaCadastrarFuncionario.html")
   res.sendFile(TelaPath)
 });
 
-// Rotas do Cliente
-ClienteRouter.get('/cadastro/get', ClienteController.getAllCliente)
-ClienteRouter.post('/cadastro/cadastrarCliente', ClienteController.postCliente)
-ClienteRouter.delete('/delete', ClienteController.deleteCliente)
-ClienteRouter.put('/put', ClienteController.updateCliente)
+// Rotas do Funcionario
+FuncionarioRouter.get('/cadastroFuncionario', FuncionarioController.getAllFuncionario)
+FuncionarioRouter.post('/cadastroFuncionario', FuncionarioController.postFuncionario)
+FuncionarioRouter.delete('/delete', FuncionarioController.deleteFuncionario)
+FuncionarioRouter.put('/put', FuncionarioController.updateFuncionario)
 
 // Exportar
-module.exports = ClienteRouter;
+module.exports = FuncionarioRouter;
