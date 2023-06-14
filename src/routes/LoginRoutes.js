@@ -17,7 +17,6 @@ const LoginController = require('../controllers/Login');
 
 // Routes
 const TelaPath = path.join(__dirname + "..", "..", "..","views", "TelaLogin.html")
-const TelaMainPath = path.join(__dirname + "..", "..", "..","views", "TelaMain.html")
 const LoginRouter = Router()
 
 // Página HTML
@@ -26,17 +25,7 @@ LoginRouter.get("/login", function(req, res){
 });
 
 // Rotas do Login
-LoginRouter.post('/login/logar', function(req, res){
-    const { FuncLogin, FuncSenha } = req.body
-    if(!FuncLogin && !FuncSenha){
-        console.log("Opa")
-    } else {
-        console.log(FuncLogin)
-        console.log(FuncSenha)
-    }
-
-    res.sendFile(TelaMainPath)
-})
+LoginRouter.post('/login', LoginController.getOneFunc)
 
 // Exportar
 module.exports = LoginRouter;
