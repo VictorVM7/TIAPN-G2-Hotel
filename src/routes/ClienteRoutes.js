@@ -8,10 +8,17 @@ const ClienteController = require('../controllers/Cliente')
 // Routes
 const ClienteRouter = Router()
 
-// Página HTML
+// Caminhos das páginas HTML
+const TelaPath = path.join(__dirname + "..", "..", "..","views", "TelaCadastroCliente.html")
+const TelaMainPath = path.join(__dirname + "..", "..", "..","views", "TelaMain.html")
+
+// Chama HTML
 ClienteRouter.get("/cadastroCliente", function(req, res){
-  const TelaPath = path.join(__dirname + "..", "..", "..","views", "TelaCadastroCliente.html")
   res.sendFile(TelaPath)
+});
+
+ClienteRouter.get("/menuPrincipal", function(req, res){
+  res.sendFile(TelaMainPath)
 });
 
 // Rotas do Cliente
