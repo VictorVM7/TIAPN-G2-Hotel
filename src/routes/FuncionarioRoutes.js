@@ -23,8 +23,11 @@ FuncionarioRouter.get("/menuPrincipal", function(req, res){
 
 // Rotas do Funcionario
 FuncionarioRouter.get('/getallFuncionario', FuncionarioController.getAllFuncionario)
+
 FuncionarioRouter.post('/cadastroFuncionario', FuncionarioController.postFuncionario)
+
 FuncionarioRouter.delete('/deleteFuncionario', FuncionarioController.deleteFuncionario)
+
 FuncionarioRouter.put('/updateFuncionario', FuncionarioController.updateFuncionario)
 
 // Exportar

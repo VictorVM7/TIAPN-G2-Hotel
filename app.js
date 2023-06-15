@@ -2,7 +2,7 @@
 const express = require('express');
 const app = express();
 app.use(express.json());
-
+const session = require('express-session');
 
 // Classes importadas
 const ClienteRouter = require('./src/routes/ClienteRoutes');
@@ -10,9 +10,14 @@ const LoginRouter = require('./src/routes/LoginRoutes');
 const FuncionarioRouter = require('./src/routes/FuncionarioRoutes');
 const bodyParser = require('body-parser');
 
-// Conversor do body da requisição 
 app.use(bodyParser.urlencoded({extended: false}))
 app.use(bodyParser.json())
+app.use(session({
+    secret: 'secrectCookie',
+    cookie: {
+        sameSite: 'strict'
+    }
+}));
 
 // Usar CSS passando para estático
 app.use(express.static(__dirname + '/assets'))

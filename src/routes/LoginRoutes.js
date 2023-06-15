@@ -14,10 +14,12 @@ app.use(bodyParser.json())
 
 // Controller
 const LoginController = require('../controllers/Login');
+const FuncionarioController = require('../controllers/Funcionario');
 
 // Routes
 const TelaPath = path.join(__dirname + "..", "..", "..","views", "TelaLogin.html")
 const LoginRouter = Router()
+const FuncionarioRouter = Router()
 
 // Página HTML
 LoginRouter.get("/login", function(req, res){
@@ -25,7 +27,7 @@ LoginRouter.get("/login", function(req, res){
 });
 
 // Rotas do Login
-LoginRouter.post('/menuPrincipal', LoginController.getOneFunc)
+LoginRouter.post('/menuPrincipal', FuncionarioController.getOneFunc)
 
 // Exportar
 module.exports = LoginRouter;

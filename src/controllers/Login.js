@@ -1,19 +1,17 @@
-const Funcionario = require('../models/Funcionario');
-
-// Módulo Express para requisições
+// Módulos
 const express = require('express');
-const app = express();
-app.use(express.json());
-
-// Bibliotecas
 const { Router } = require("express");
 const path = require('path');
 const bodyParser = require('body-parser');
 
-// Conversor do body da requisição 
+// Conversor do body da requisição
+const app = express();
+app.use(express.json());
 app.use(bodyParser.urlencoded({extended: true}))
 app.use(bodyParser.json())
 
+// Tabelas
+const Funcionario = require('../models/Funcionario');
 
 // Routes
 const TelaPath = path.join(__dirname + "..", "..", "..","views", "TelaLogin.html")
