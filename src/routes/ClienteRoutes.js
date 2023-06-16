@@ -3,28 +3,20 @@ const { Router } = require("express");
 const path = require('path')
 
 // Controller
-const ClienteController = require('../controllers/Cliente')
+const ClienteController = require('../controllers/Cliente');
+const SetView = require("../SetView");
+const { LoadUser, LoadNome } = require("../CheckSession");
 
 // Routes
 const ClienteRouter = Router()
 
-// Caminhos das páginas HTML
-const TelaPath = path.join(__dirname + "..", "..", "..","views", "TelaCadastroCliente.ejs")
-const TelaMainPath = path.join(__dirname + "..", "..", "..","views", "TelaMain.ejs")
-
 // Chama HTML
 ClienteRouter.get("/cadastroCliente", function(req, res){
-  res.render(TelaPath, {
-    FuncLogin: req.session.user,
-    FuncNome: req.session.name
-  })
+  SetView.ViewTelaCadastroCliente(res, LoadUser(req), LoadNome(req));
 });
 
 ClienteRouter.get("/menuPrincipal", function(req, res){
-  res.render(TelaMainPath, {
-    FuncLogin: req.session.user,
-    FuncNome: req.session.name
-  })
+  SetView.ViewTelaMain(res, LoadUser(req), LoadNome(req));
 });
 
 // Rotas do Cliente

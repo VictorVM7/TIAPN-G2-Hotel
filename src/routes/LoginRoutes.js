@@ -14,17 +14,16 @@ app.use(bodyParser.urlencoded({extended: true}))
 app.use(bodyParser.json())
 
 // Controller
-const LoginController = require('../controllers/Login');
 const FuncionarioController = require('../controllers/Funcionario');
+const SetView = require('../SetView');
+const { LoadNome, LoadUser } = require('../CheckSession');
 
 // Routes
-const TelaPath = path.join(__dirname + "..", "..", "..","views", "TelaLogin.ejs")
 const LoginRouter = Router()
-const FuncionarioRouter = Router()
 
 // Página HTML
 LoginRouter.get("/login", function(req, res){
-  res.render(TelaPath)
+   SetView.ViewTelaLogin(res, LoadUser(req), LoadNome(req));
 });
 
 // Rotas do Login

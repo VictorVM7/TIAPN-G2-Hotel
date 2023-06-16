@@ -6,19 +6,19 @@ module.exports = {
     },
 
     ViewTelaCadastroCliente: (res, FuncLogin, FuncNome) => {
-        return res.render('TelaCadastrarFuncionario', { FuncLogin, FuncNome });
+        return res.render('TelaCadastroCliente', { FuncLogin, FuncNome });
     },
 
     ViewTelaCheckIn: (res, FuncLogin, FuncNome) => {
-        return res.render('TelaCadastrarFuncionario', { FuncLogin, FuncNome });
+        return res.render('TelaCheckIn', { FuncLogin, FuncNome });
     },
 
     ViewTelaCheckOut: (res, FuncLogin, FuncNome) => {
-        return res.render('TelaCadastrarFuncionario', { FuncLogin, FuncNome });
+        return res.render('TelaCheckOut', { FuncLogin, FuncNome });
     },
 
     ViewTelaLogin: (res, FuncLogin, FuncNome) => {
-        return res.render('TelaCadastrarFuncionario', { FuncLogin, FuncNome });
+        return res.render('TelaLogin', { FuncLogin, FuncNome });
     },
     
     ViewTelaMain: (res, FuncLogin, FuncNome) => {
@@ -26,11 +26,11 @@ module.exports = {
     },
 
     ViewTelaRealizarReserva: (res, FuncLogin, FuncNome) => {
-        return res.render('TelaCadastrarFuncionario', { FuncLogin, FuncNome });
+        return res.render('TelaRealizarReserva', { FuncLogin, FuncNome });
     },
 
     ViewTelaVerReserva: (res, FuncLogin, FuncNome) => {
-        return res.render('TelaCadastrarFuncionario', { FuncLogin, FuncNome });
+        return res.render('TelaVerReserva', { FuncLogin, FuncNome });
     },
 
 } 
