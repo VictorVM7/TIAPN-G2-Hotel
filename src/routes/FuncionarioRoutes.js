@@ -4,34 +4,16 @@ const session = require('express-session');
 const path = require('path')
 
 // Controller
-const FuncionarioController = require('../controllers/Funcionario')
+const FuncionarioController = require('../controllers/Funcionario');
+const SetView = require("../SetView");
+const { LoadUser, LoadNome } = require("../CheckSession");
 
 // Routes
 const FuncionarioRouter = Router()
 
-// Caminhos das páginas HTML
-const TelaPath = path.join(__dirname + "..", "..", "..","views", "TelaCadastrarFuncionario.ejs")
-const TelaMainPath = path.join(__dirname + "..", "..", "..","views", "TelaMain.ejs")
-
 // Chama HTML
 FuncionarioRouter.get("/cadastroFuncionario", function(req, res){
-  res.render(TelaPath)
-});
-
-FuncionarioRouter.get("/menuPrincipal", function(req, res){
-
-  if(req.session.authorized) {
-    res.render(TelaPath, {
-      FuncLogin: req.session.user,
-      FuncNome: req.session.name
-    })
-  }
-  else {
-    res.render(TelaPath, {
-      FuncLogin: req.session.user,
-      FuncNome: req.session.name
-    })
-  }
+  SetView.ViewTelaCadastrarFuncionario(res, LoadUser(req), LoadNome(req));
 });
 
 // Rotas do Funcionario

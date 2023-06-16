@@ -1,9 +1,12 @@
-// Módulo Express para requisições
-const express = require('express');
-const app = express();
-app.use(express.json());
-const session = require('express-session');
+// Classes e funções
+global.funcaoSession = require('./src/CheckSession');
+global.funcaoSetView = require('./src/SetView');
 
+// Módulo Express para requisições
+global.express = require('express');
+global.app = express();
+global.session = require('express-session');
+app.use(express.json());
 
 // Classes importadas
 const ClienteRouter = require('./src/routes/ClienteRoutes');

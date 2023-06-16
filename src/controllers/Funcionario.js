@@ -1,13 +1,5 @@
-const minhaFuncao = require('../CheckSession')
-
 // Importa modelo Funcionario.js de Models
 const Funcionario = require('../models/Funcionario');
-
-// Módulo Express para requisições
-const express = require('express');
-const app = express();
-app.use(express.json());
-const session = require('express-session');
 
 // POST - Cadastra usuário
 module.exports = {
@@ -23,7 +15,7 @@ module.exports = {
                 res.status(204).end()
             }
         } catch (error) {
-            res.status(401)
+            res.status(204)
         }
     },
 
@@ -55,10 +47,12 @@ module.exports = {
 
             if (!funcionario) {
                 res.render('TelaLogin')
-            } else {
-                const FuncNome = SessionLogin(funcionario.FuncNome);
-                const FuncLogin = SessionNome(FuncLogin);
-                res.render('TelaMain', {FuncLogin, FuncNome});
+            } else {      
+                const nomeFunc = funcionario.FuncNome;
+                const login = funcaoSession.SessionLogin(req, FuncLogin);
+                const nome = funcaoSession.SessionNome(req, nomeFunc);
+                req.session.authorized = true;
+                funcaoSetView.ViewTelaMain(res, login, nome);
             }
         } catch (error) {
             console.log('Erro')
