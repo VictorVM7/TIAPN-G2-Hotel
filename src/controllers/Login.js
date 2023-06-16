@@ -14,8 +14,8 @@ app.use(bodyParser.json())
 const Funcionario = require('../models/Funcionario');
 
 // Routes
-const TelaPath = path.join(__dirname + "..", "..", "..","views", "TelaLogin.html")
-const TelaMainPath = path.join(__dirname + "..", "..", "..","views", "TelaMain.html")
+const TelaPath = path.join(__dirname + "..", "..", "..","views", "TelaLogin.ejs")
+const TelaMainPath = path.join(__dirname + "..", "..", "..","views", "TelaMain.ejs")
 
 
 exports.getOneFunc = async (req, res) => {
@@ -25,12 +25,12 @@ exports.getOneFunc = async (req, res) => {
     if (FuncLogin || FuncSenha) {
         const funcionario = await Funcionario.findOne({ where: { FuncLogin, FuncSenha } })
         if(!funcionario){
-            res.sendFile(TelaPath)
+            res.render('TelaLogin')
         }
         else {
-            res.sendFile(TelaMainPath)
+            res.render('TelaMain')
         }   
     } else {
-        res.sendFile(TelaPath)
+        res.render('TelaLogin')
     }
 };

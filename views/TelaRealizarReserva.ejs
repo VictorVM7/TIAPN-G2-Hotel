@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<!-- Links (Conexões com CSS ou outras fontes) -->
+	<link rel="stylesheet" href="src/assets/Style/Default.css">
+    <!-- Link para Favicon (imagem que fica na aba) -->
+    <link rel="shortcut icon" href="src/assets/Images/fav/favicon.ico" type="image/x-icon" />
+	<!-- Font Awesome -->
+	<script src="https://kit.fontawesome.com/1130775dd0.js" crossorigin="anonymous"></script>
+	<!-- Toggle Button -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+	<!-- Título da Tela (Apresentado na Aba em Cima) -->
+	<title>Califórnia.System | Realizar Reserva</title>
+</head>
+
+<!-- HEADER (CABEÇALHO) ↓↓↓ -->
+<header>
+	<div class="navbar">
+		<div class="logo">
+			<a onclick="window.location.href='/menuPrincipal'">Califórnia.System</a>
+		</div>
+		<div class="user">
+			<li>
+				<p><%= FuncLogin %></p>
+				<p><%= FuncNome %></p>
+			</li>
+			<i class="fa-sharp fa-solid fa-circle-user"></i>
+		</div>
+		<div class="toggle-btn">
+			<i class="fa-solid fa-bars"></i>
+		</div>
+	</div>
+	<div>
+		<li>
+			<a onclick="window.location.href='/login'">Logout</a>
+		</li>
+	</div>
+</header>
+
+
+<body>
+<!-- FORM REALIZAR RESERVA ↓↓↓ -->
+<div class="form-area">
+	<div class="containerform">
+		<div class="title">
+			Realizar Reserva
+		</div>
+		<div class="subtitle">
+			<p>Para realizar reservas basta preencher as seguintes informações:</p>
+		</div>
+		<form>
+			<div class="fill">
+				<div class="input-box">
+					<span class="detailsText">Nome do Cliente:</span>
+					<input type="text" placeholder="Digite o Nome do Cliente" required>
+				</div>
+				<div class="input-box">
+					<span class="detailsText">CPF do Cliente:</span>
+					<input type="text" placeholder="Digite o CPF do Cliente" required>
+				</div>
+				<div class="input-box">
+					<span class="detailsText">Tipo de Quarto:</span>
+					<input type="text" list="type" placeholder="Selecione um Tipo de Quarto" required>
+					<datalist id="type">
+						<option value="Casal">Quarto de Casal</option>
+						<option value="Solteiro">Quarto de Solteiro</option>
+						<option value="Luxo">Quarto de Luxo</option>
+					</datalist>
+				</div>
+				<div class="input-box">
+					<span class="detailsText">Quartos Disponíveis:</span>
+					<input type="text" list="available" placeholder="Selecione um Quarto Disponível" required>
+					<datalist id="available">
+						<option value="1">Quarto 1</option>
+						<option value="2">Quarto 2</option>
+						<option value="3">Quarto 3</option>
+					</datalist>
+				</div>
+				<div class="input-box">
+					<span class="detailsText">Inicio da Reserva:</span>
+					<input type="text" placeholder="Digite a Data de Inicio da Reserva" required>
+				</div>
+				<div class="input-box">
+					<span class="detailsText">Fim da Reserva:</span>
+					<input type="text" placeholder="Digite a Data de Fim da Reserva" required>
+				</div>
+			</div>
+			<div class="button">
+				<button class="btnBack"> 
+					<a href="TelaMain.html">Voltar</a>
+				</button>
+				<button class="btnRegister" type="submit" onclick="openPopup()">
+					<a href="#">Reservar</a>
+				</button>	
+				<div class="popup" id="popup">
+					<i class="fa-sharp fa-solid fa-circle-check fa-5x"></i>
+					<h2>Reserva realizada com Sucesso</h2>
+					<button type="button" onclick="closePopup()">OK</button>
+				</div>	
+			</div>
+		</form>
+	</div>
+</div>
+
+<!-- FOOTER (RODAPÉ) ↓↓↓ -->
+	<footer>
+		<div class="footer-content">
+			<p>All Rights Reserved to System.California </p>
+		</div>
+	</footer>
+
+<!-- MENU HOVER ↓↓↓ -->
+	<script>
+		const toggleBtn = document.querySelector('.toggle-btn')
+		const toggleBtnIcon = document.querySelector('.toggle-btn i')
+		const dropDownMenu = document.querySelector('.dropdown-menu')
+
+		toggleBtn.onclick = function() {
+			dropDownMenu.classList.toggle('open')
+			const isOpen = dropDownMenu.classList.contains('open')
+
+			toggleBtnIcon.classList = isOpen
+				? 'fa-solid fa-xmark'
+				: 'fa-solid fa-bars'
+		}
+
+		// POPUP
+		
+		let popup = document.getElementById("popup");
+
+		function openPopup(){
+			popup.classList.add("open-popup");
+		}
+		function closePopup(){
+			popup.classList.remove("open-popup");
+		}
+
+	</script> 
+
+</body>
+
+</html>

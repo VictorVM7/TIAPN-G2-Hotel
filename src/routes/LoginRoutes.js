@@ -2,6 +2,7 @@
 const express = require('express');
 const app = express();
 app.use(express.json());
+const session = require('express-session');
 
 // Bibliotecas
 const { Router } = require("express");
@@ -17,13 +18,13 @@ const LoginController = require('../controllers/Login');
 const FuncionarioController = require('../controllers/Funcionario');
 
 // Routes
-const TelaPath = path.join(__dirname + "..", "..", "..","views", "TelaLogin.html")
+const TelaPath = path.join(__dirname + "..", "..", "..","views", "TelaLogin.ejs")
 const LoginRouter = Router()
 const FuncionarioRouter = Router()
 
 // Página HTML
 LoginRouter.get("/login", function(req, res){
-  res.sendFile(TelaPath)
+  res.render(TelaPath)
 });
 
 // Rotas do Login

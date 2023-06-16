@@ -9,16 +9,22 @@ const ClienteController = require('../controllers/Cliente')
 const ClienteRouter = Router()
 
 // Caminhos das páginas HTML
-const TelaPath = path.join(__dirname + "..", "..", "..","views", "TelaCadastroCliente.html")
-const TelaMainPath = path.join(__dirname + "..", "..", "..","views", "TelaMain.html")
+const TelaPath = path.join(__dirname + "..", "..", "..","views", "TelaCadastroCliente.ejs")
+const TelaMainPath = path.join(__dirname + "..", "..", "..","views", "TelaMain.ejs")
 
 // Chama HTML
 ClienteRouter.get("/cadastroCliente", function(req, res){
-  res.sendFile(TelaPath)
+  res.render(TelaPath, {
+    FuncLogin: req.session.user,
+    FuncNome: req.session.name
+  })
 });
 
 ClienteRouter.get("/menuPrincipal", function(req, res){
-  res.sendFile(TelaMainPath)
+  res.render(TelaMainPath, {
+    FuncLogin: req.session.user,
+    FuncNome: req.session.name
+  })
 });
 
 // Rotas do Cliente

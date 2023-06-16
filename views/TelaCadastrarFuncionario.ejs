@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<!-- Links (Conexões com CSS ou outras fontes) -->
+	<link type="text/css" rel="stylesheet" href="/Style/Default.css">
+    <!-- Link para Favicon (imagem que fica na aba) -->
+    <link rel="shortcut icon" href="/Images/fav/favicon.ico" type="image/x-icon" />
+	<!-- Font Awesome -->
+	<script src="https://kit.fontawesome.com/1130775dd0.js" crossorigin="anonymous"></script>
+	<!-- Toggle Button -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+	<!-- Título da Tela (Apresentado na Aba em Cima) -->
+	<title>Califórnia.System | Cadastrar Funcionários</title>
+</head>
+
+<!-- HEADER (CABEÇALHO) ↓↓↓ -->
+<header>
+	<div class="navbar">
+		<div class="logo">
+			<a onclick="window.location.href='/menuPrincipal'">Califórnia.System</a>
+		</div>
+		<div class="user">
+			<li>
+				<p><%= FuncLogin %></p>
+				<p><%= FuncNome %></p>
+			</li>
+			<i class="fa-sharp fa-solid fa-circle-user"></i>
+		</div>
+		<div class="toggle-btn">
+			<i class="fa-solid fa-bars"></i>
+		</div>
+	</div>
+	<div>
+		<li>
+			<a onclick="window.location.href='/login'">Logout</a>
+		</li>
+	</div>
+</header>
+
+
+<body>
+<!-- FORM REALIZAR RESERVA ↓↓↓ -->
+<div class="form-area">
+	<div class="containerform">
+		<div class="title">
+			Cadastrar Funcionários
+		</div>
+		<div class="subtitle">
+			<p>Para realizar o cadastro do funcionário basta preencher as seguintes informações:</p>
+		</div>
+		<form action="/cadastroFuncionario" method="POST">
+			<div class="fill">
+				<div class="input-box">
+					<span class="detailsText">Nome do Funcionário:</span>
+					<input type="text"  name="FuncNome" placeholder="Digite o Nome do Funcionário" required>
+				</div>
+				<div class="input-box">
+					<span class="detailsText">Idade:</span>
+					<input type="text"  name="FuncIdade" placeholder="Digite a Idade do Funcionário" required>
+				</div>
+				<div class="input-box">
+					<span class="detailsText">CPF:</span>
+					<input type="text"  name="FuncCPF" placeholder="Digite o CPF do Funcionário" required>
+				</div>
+                <div class="input-box">
+					<span class="detailsText">Sexo:</span>
+					<input type="text"  name="FuncSexo" placeholder="Digite o Sexo do Funcionário" required>
+				</div>
+                <div class="input-box">
+					<span class="detailsText">Login:</span>
+					<input type="text"  name="FuncLogin" placeholder="Digite o Login / Usuário" required>
+				</div>
+                <div class="input-box">
+					<span class="detailsText">Senha:</span>
+					<input type="password"  name="FuncSenha" placeholder="Digite a Senha" required>
+				</div>
+			</div>
+			<div class="button">
+				<button class="btnBack" onclick="window.location.href='/menuPrincipal'">
+					<a>Voltar</a>
+				</button>
+				<button class="btnRegister" type="submit" onclick="openPopup()">
+					<a>Cadastrar</a>
+				</button>	
+				<div class="popup" id="popup">
+					<i class="fa-sharp fa-solid fa-circle-check fa-5x"></i>
+					<h2>Cadastro do Funcionário realizado com Sucesso</h2>
+					<button type="button" onclick="closePopup()">OK</button>
+				</div>
+			</div>
+		</form>
+	</div>
+</div>
+
+<!-- FOOTER (RODAPÉ) ↓↓↓ -->
+	<footer>
+		<div class="footer-content">
+			<p>All Rights Reserved to System.California </p>
+		</div>
+	</footer>
+
+<!-- MENU HOVER ↓↓↓ -->
+	<script>
+		const toggleBtn = document.querySelector('.toggle-btn')
+		const toggleBtnIcon = document.querySelector('.toggle-btn i')
+		const dropDownMenu = document.querySelector('.dropdown-menu')
+
+		toggleBtn.onclick = function() {
+			dropDownMenu.classList.toggle('open')
+			const isOpen = dropDownMenu.classList.contains('open')
+
+			toggleBtnIcon.classList = isOpen
+				? 'fa-solid fa-xmark'
+				: 'fa-solid fa-bars'
+		}
+		
+		// POPUP
+		
+		let popup = document.getElementById("popup");
+
+		function openPopup(){
+			popup.classList.add("open-popup");
+		}
+		function closePopup(){
+			popup.classList.remove("open-popup");
+		}
+
+	</script> 
+
+</body>
+
+</html>

@@ -4,6 +4,7 @@ const app = express();
 app.use(express.json());
 const session = require('express-session');
 
+
 // Classes importadas
 const ClienteRouter = require('./src/routes/ClienteRoutes');
 const LoginRouter = require('./src/routes/LoginRoutes');
@@ -20,6 +21,7 @@ app.use(session({
 }));
 
 // Usar CSS passando para estático
+app.set('view engine', 'ejs');
 app.use(express.static(__dirname + '/assets'))
 
 // Routers
