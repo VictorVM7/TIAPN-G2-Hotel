@@ -12,6 +12,8 @@ app.use(express.json());
 const ClienteRouter = require('./src/routes/ClienteRoutes');
 const LoginRouter = require('./src/routes/LoginRoutes');
 const FuncionarioRouter = require('./src/routes/FuncionarioRoutes');
+const ReservaRouter = require('./src/routes/ReservaRoutes');
+
 const bodyParser = require('body-parser');
 
 app.use(bodyParser.urlencoded({extended: false}))
@@ -31,6 +33,7 @@ app.use(express.static(__dirname + '/assets'))
 app.use("/", ClienteRouter);
 app.use("/", LoginRouter);
 app.use("/", FuncionarioRouter);
+app.use("/", ReservaRouter);
 
 // Porta que está executando o projeto
 app.listen(8080, () => {

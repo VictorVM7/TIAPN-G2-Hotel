@@ -1,22 +1,5 @@
-// Módulos
-const express = require('express');
-const { Router } = require("express");
-const path = require('path');
-const bodyParser = require('body-parser');
-
-// Conversor do body da requisição
-const app = express();
-app.use(express.json());
-app.use(bodyParser.urlencoded({extended: true}))
-app.use(bodyParser.json())
-
 // Tabelas
 const Funcionario = require('../models/Funcionario');
-
-// Routes
-const TelaPath = path.join(__dirname + "..", "..", "..","views", "TelaLogin.ejs")
-const TelaMainPath = path.join(__dirname + "..", "..", "..","views", "TelaMain.ejs")
-
 
 exports.getOneFunc = async (req, res) => {
     const { ID } = req.params

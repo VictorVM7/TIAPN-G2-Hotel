@@ -1,4 +1,6 @@
 // Importa modelo Cliente.js de Models
+const { LoadUser, LoadNome } = require('../CheckSession');
+const SetView = require('../SetView');
 const Cliente = require('../models/Cliente');
 
 // POST - Cadastra usuário
@@ -7,10 +9,10 @@ exports.postCliente = async (req, res) => {
     try {
         const cliente = await Cliente.findOne({ where: { CliCPF } })
         if (cliente) {
-            res.status(202).json({messagem: false})
+            SetView.ViewTelaCadastroCliente(res, LoadUser(req), LoadNome(req));
         } else {
             await Cliente.create(req.body)         
-            res.status(202).end()         
+            SetView.ViewTelaCadastroCliente(res, LoadUser(req), LoadNome(req));         
         }
     } catch (error) {
         res.status(202)
