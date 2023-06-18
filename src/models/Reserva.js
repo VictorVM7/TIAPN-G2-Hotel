@@ -29,11 +29,11 @@ const Reserva = db.define('Reserva', {
         allowNull: false,
     },
     DataInicio: {
-        type: Sequelize.DATE,
+        type: Sequelize.DATEONLY,
         allowNull: false
     },
     DataFim:{
-        type: Sequelize.DATE,
+        type: Sequelize.DATEONLY,
         allowNull: false,
     }
 });

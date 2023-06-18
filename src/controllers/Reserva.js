@@ -15,17 +15,40 @@ module.exports = {
 
             if (!cliente) {
                 res.status(400).json({ messagem: 'não existe cliente' })
-            } else {
-                await Reserva.create({
-                    ID_Funcionario: 1,
-                    ID_Cliente: cliente.ID,
-                    TipoQuarto: TipoQuarto,
-                    Quarto: Quarto,
-                    DataInicio: DataInicio,
-                    DataFim: DataFim,
-                })
-                res.status(204).end()
             }
+            else {
+                const ID_Cliente = cliente.ID;
+                const ocupado = await Reserva.findOne({
+                    where: {ID_Cliente, TipoQuarto, Quarto, DataInicio, DataFim}
+                })
+
+                let inicio = new Date(DataInicio);
+                let fim = new Date(DataFim);
+                let loop = new Date(inicio);
+                while (loop <= fim) {
+                    console.log(loop.toString());
+                    let newDate = loop.setDate(loop.getDate() + 1);
+                    loop= new Date(newDate);
+
+
+                    if(ocupado){
+                        res.status(400).json({ messagem: `Esse quaerto só estará disponível a partir do dia: ${ocupado.DataFim}`})
+                    }
+                    else{
+                        await Reserva.create({
+                            ID_Funcionario: 1,
+                            ID_Cliente: cliente.ID,
+                            TipoQuarto: TipoQuarto,
+                            Quarto: Quarto,
+                            DataInicio: DataInicio,
+                            DataFim: DataFim,
+                        })
+                        res.status(204).end()
+                    }
+
+                }
+            }
+
         } catch (error) {
             res.status(400).json({message: 'erro no post'})
         }
