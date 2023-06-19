@@ -2,6 +2,10 @@
 const Reserva = require('../models/Reserva');
 const Funcionario = require('../models/Funcionario');
 const Cliente = require('../models/Cliente');
+const CheckReserva = require('../CheckReserva');
+const SetView = require('../SetView');
+const { LoadUser, LoadNome } = require('../CheckSession');
+const SetAlert = require('../SetAlert');
 
 // POST - Cadastra usuário
 module.exports = {
@@ -14,43 +18,39 @@ module.exports = {
             })
 
             if (!cliente) {
-                res.status(400).json({ messagem: 'não existe cliente' })
+                SetAlert.AlertClienteInexistente(res, LoadUser(req), LoadNome(req));
+                res.status(204).end();
             }
             else {
-                const ID_Cliente = cliente.ID;
-                const ocupado = await Reserva.findOne({
-                    where: {ID_Cliente, TipoQuarto, Quarto, DataInicio, DataFim}
+                const ocupado = await Reserva.findAll({
+                    where: { TipoQuarto, Quarto }
                 })
 
                 let inicio = new Date(DataInicio);
                 let fim = new Date(DataFim);
                 let loop = new Date(inicio);
-                while (loop <= fim) {
-                    console.log(loop.toString());
-                    let newDate = loop.setDate(loop.getDate() + 1);
-                    loop= new Date(newDate);
 
+                let quartoOcupado = CheckReserva.VerificaReserva(ocupado, inicio, fim);
+                console.log(quartoOcupado);
 
-                    if(ocupado){
-                        res.status(400).json({ messagem: `Esse quaerto só estará disponível a partir do dia: ${ocupado.DataFim}`})
-                    }
-                    else{
-                        await Reserva.create({
-                            ID_Funcionario: 1,
-                            ID_Cliente: cliente.ID,
-                            TipoQuarto: TipoQuarto,
-                            Quarto: Quarto,
-                            DataInicio: DataInicio,
-                            DataFim: DataFim,
-                        })
-                        res.status(204).end()
-                    }
-
+                if (quartoOcupado) {
+                    res.status(204).json({ messagem: `Esse quarto só estará disponível a partir do dia: ${ocupado.DataFim}` })
+                }
+                else {
+                    await Reserva.create({
+                        ID_Funcionario: 1,
+                        ID_Cliente: cliente.ID,
+                        TipoQuarto: TipoQuarto,
+                        Quarto: Quarto,
+                        DataInicio: DataInicio,
+                        DataFim: DataFim,
+                    })
+                    res.status(204).end()
                 }
             }
 
         } catch (error) {
-            res.status(400).json({message: 'erro no post'})
+            res.status(400).json({ message: 'erro no post' })
         }
     },
 
@@ -82,7 +82,7 @@ module.exports = {
 
             if (!reserva) {
                 res.render('TelaLogin')
-            } else {      
+            } else {
                 const nomeFunc = reserva.FuncNome;
                 const login = funcaoSession.SessionLogin(req, FuncLogin);
                 const nome = funcaoSession.SessionNome(req, nomeFunc);

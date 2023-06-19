@@ -26,7 +26,8 @@ module.exports = {
     },
 
     ViewTelaRealizarReserva: (res, FuncLogin, FuncNome) => {
-        return res.render('TelaRealizarReserva', { FuncLogin, FuncNome });
+        let alerta = false;
+        return res.render('TelaRealizarReserva', { FuncLogin, FuncNome, alerta });
     },
 
     ViewTelaVerReserva: (res, FuncLogin, FuncNome) => {

@@ -103,6 +103,17 @@
 				</div>	
 			</div>
 		</form>
+
+		<% if (alerta) { %>
+			<script>
+				let popup = document.getElementById("popup");
+				let valorAlerta = "<%= alerta %>";
+
+				function openPopup(){
+					popup.classList.add("open-popup");
+				}
+			</script>
+		<% } %>
 	</div>
 </div>
 
@@ -127,18 +138,6 @@
 				? 'fa-solid fa-xmark'
 				: 'fa-solid fa-bars'
 		}
-
-		// POPUP
-		
-		let popup = document.getElementById("popup");
-
-		function openPopup(){
-			popup.classList.add("open-popup");
-		}
-		function closePopup(){
-			popup.classList.remove("open-popup");
-		}
-
 	</script> 
 
 </body>
