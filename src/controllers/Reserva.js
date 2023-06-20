@@ -6,12 +6,19 @@ const CheckReserva = require('../CheckReserva');
 const SetView = require('../SetView');
 const { LoadUser, LoadNome } = require('../CheckSession');
 const SetAlert = require('../SetAlert');
+const { Op } = require('sequelize');
 
 // POST - Cadastra usuário
 module.exports = {
 
     postReserva: async (req, res) => {
         const { CliCPF, TipoQuarto, Quarto, DataInicio, DataFim } = req.body
+        const funcLogin = req.session.funcLogin;
+        const funcionario = await Funcionario.findOne({
+            where: funcLogin
+        })
+        console.log(funcLogin)
+
         try {
             const cliente = await Cliente.findOne({
                 where: { CliCPF }
@@ -23,22 +30,26 @@ module.exports = {
             }
             else {
                 const ocupado = await Reserva.findAll({
-                    where: { TipoQuarto, Quarto }
+                    where: { 
+                        TipoQuarto,
+                        Quarto,
+                        [Op.and]: [
+                            {DataInicio: {[Op.gte]: DataInicio}},
+                            {DataFim: {[Op.lte]: DataFim}}
+                        ]
+                    }
                 })
+
+                console.log(ocupado)
 
                 let inicio = new Date(DataInicio);
                 let fim = new Date(DataFim);
                 let loop = new Date(inicio);
 
-                let quartoOcupado = CheckReserva.VerificaReserva(ocupado, inicio, fim);
-                console.log(quartoOcupado);
-
-                if (quartoOcupado) {
-                    res.status(204).json({ messagem: `Esse quarto só estará disponível a partir do dia: ${ocupado.DataFim}` })
-                }
-                else {
+                if (!ocupado) {
+                    console.log(1)
                     await Reserva.create({
-                        ID_Funcionario: 1,
+                        ID_Funcionario: funcionario.ID,
                         ID_Cliente: cliente.ID,
                         TipoQuarto: TipoQuarto,
                         Quarto: Quarto,
@@ -46,6 +57,9 @@ module.exports = {
                         DataFim: DataFim,
                     })
                     res.status(204).end()
+                }
+                else {
+                    res.status(200).json({ messagem: `Esse quarto só estará disponível a partir do dia: ${ocupado.DataFim}` })
                 }
             }
 
