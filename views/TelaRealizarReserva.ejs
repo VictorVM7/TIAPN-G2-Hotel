@@ -26,20 +26,24 @@
 		<div class="user">
 			<li>
 				<p><%= FuncLogin %></p>
+			</li>
+			<li>|</li>
+			<li>
 				<p><%= FuncNome %></p>
 			</li>
-			<i class="fa-sharp fa-solid fa-circle-user"></i>
+			<li>
+				<i class="fa-sharp fa-solid fa-circle-user"></i>
+			</li>
+			<li>
+				<a onclick="window.location.href='/login'">Logout</a>
+			</li>			
 		</div>
 		<div class="toggle-btn">
 			<i class="fa-solid fa-bars"></i>
 		</div>
 	</div>
-	<div>
-		<li>
-			<a onclick="window.location.href='/login'">Logout</a>
-		</li>
-	</div>
 </header>
+
 
 
 <body>
@@ -104,9 +108,14 @@
 			</div>
 		</form>
 
-		<% if (alerta) { %>
+		<% if (alerta1) { %>
 			<script>
 				alert("Usuário inexistente!")
+			</script>
+		<% } %>
+		<% if (alerta2) { %>
+			<script>
+				alert("Quarto indisponível na data informada!")
 			</script>
 		<% } %>
 	</div>

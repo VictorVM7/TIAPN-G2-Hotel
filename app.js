@@ -15,6 +15,8 @@ const FuncionarioRouter = require('./src/routes/FuncionarioRoutes');
 const ReservaRouter = require('./src/routes/ReservaRoutes');
 
 const bodyParser = require('body-parser');
+const CheckInRouter = require('./src/routes/CheckInRoutes');
+const CheckOutRouter = require('./src/routes/CheckOutRoutes');
 
 app.use(bodyParser.urlencoded({extended: false}))
 app.use(bodyParser.json())
@@ -34,6 +36,8 @@ app.use("/", ClienteRouter);
 app.use("/", LoginRouter);
 app.use("/", FuncionarioRouter);
 app.use("/", ReservaRouter);
+app.use("/", CheckInRouter);
+app.use("/", CheckOutRouter)
 
 // Porta que está executando o projeto
 app.listen(8080, () => {

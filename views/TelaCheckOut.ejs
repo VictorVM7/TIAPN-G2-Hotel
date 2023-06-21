@@ -6,9 +6,9 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<!-- Links (Conexões com CSS ou outras fontes) -->
-	<link rel="stylesheet" href="src/assets/Style/Default.css">
+	<link rel="stylesheet" href="/Style/Default.css">
     <!-- Link para Favicon (imagem que fica na aba) -->
-    <link rel="shortcut icon" href="src/assets/Images/fav/favicon.ico" type="image/x-icon" />
+    <link rel="shortcut icon" href="/Images/fav/favicon.ico" type="image/x-icon" />
 	<!-- Font Awesome -->
 	<script src="https://kit.fontawesome.com/1130775dd0.js" crossorigin="anonymous"></script>
 	<!-- Toggle Button -->
@@ -25,21 +25,25 @@
 		</div>
 		<div class="user">
 			<li>
-				<p>Nome do Usuário</p>
-				<p>Tipo do Usuário</p>
+				<p><%= FuncLogin %></p>
 			</li>
-			<i class="fa-sharp fa-solid fa-circle-user"></i>
+			<li>|</li>
+			<li>
+				<p><%= FuncNome %></p>
+			</li>
+			<li>
+				<i class="fa-sharp fa-solid fa-circle-user"></i>
+			</li>
+			<li>
+				<a onclick="window.location.href='/login'">Logout</a>
+			</li>			
 		</div>
 		<div class="toggle-btn">
 			<i class="fa-solid fa-bars"></i>
 		</div>
 	</div>
-	<div class="dropdown-menu">
-		<li>
-			<a href="TelaLogin.html">Logout</a>
-		</li>
-	</div>
 </header>
+
 
 
 <body>
@@ -52,34 +56,23 @@
 		<div class="subtitle">
 			<p>Para realizar o check-out basta preencher as seguintes informações:</p>
 		</div>
-		<form>
+		<form action="/checkout" method="POST">
 			<div class="fill">
 				<div class="input-box">
-					<span class="detailsText">Nome do Cliente:</span>
-					<input type="text" placeholder="Digite o Nome do Cliente" required>
-				</div>
-				<div class="input-box">
 					<span class="detailsText">CPF do Cliente:</span>
-					<input type="text" placeholder="Digite o CPF do Cliente" required>
-				</div>
-				<div class="input-box">
-					<span class="detailsText">Confirma Quarto:</span>
-					<input type="text" list="confirm" placeholder="Confirme o Quarto" required>
-					<datalist id="confirm">
-						<option value="Selecionado">Quarto Selecionado</option>
-					</datalist>
+					<input type="text" name="CliCPF" placeholder="Digite o CPF do Cliente" required>
 				</div>
 				<div class="input-box">
 					<span class="detailsText">Número da Reserva:</span>
-					<input type="text" placeholder="Digite o Número da Reserva" required>
+					<input type="text" name="ID_Reserva" placeholder="Digite o Número da Reserva" required>
 				</div>
 			</div>
 			<div class="button">
-				<button class="btnBack"> 
-					<a href="TelaMain.html">Voltar</a>
+				<button class="btnBack"  onclick="window.location.href='/menuPrincipal'""> 
+					<a>Voltar</a>
 				</button>
 				<button class="btnRegister" type="submit" onclick="openPopup()">
-					<a href="#">Check-Out</a>
+					<a>Check-Out</a>
 				</button>	
 				<div class="popup" id="popup">
 					<i class="fa-sharp fa-solid fa-circle-check fa-5x"></i>

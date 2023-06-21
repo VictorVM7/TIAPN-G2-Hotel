@@ -27,18 +27,21 @@
 			<div class="user">
 				<li>
 					<p><%= FuncLogin %></p>
+				</li>
+				<li>|</li>
+				<li>
 					<p><%= FuncNome %></p>
 				</li>
-				<i class="fa-sharp fa-solid fa-circle-user"></i>
+				<li>
+					<i class="fa-sharp fa-solid fa-circle-user"></i>
+				</li>
+				<li>
+					<a onclick="window.location.href='/login'">Logout</a>
+				</li>			
 			</div>
 			<div class="toggle-btn">
 				<i class="fa-solid fa-bars"></i>
 			</div>
-		</div>
-		<div>
-			<li>
-				<a onclick="window.location.href='/login'">Logout</a>
-			</li>
 		</div>
 	</header>
 
@@ -73,8 +76,8 @@
 			<section class="card">
 				<i class="fa-solid fa-building-circle-check fa-2x" style="color: #074073;"></i>
 				<h3>Check-In</h3>
-				<button>
-					<a href="TelaCheckIn.html">Realizar Check-In</a>
+				<button onclick= "window.location.href='/checkin'">
+					<a>Realizar Check-In</a>
 				</button>
 			</section>
 
@@ -82,8 +85,8 @@
 			<section class="card">
 				<i class="fa-solid fa-right-from-bracket fa-2x" style="color: #074073;"></i>
 				<h3>Check-Out</h3>
-				<button>
-					<a href="TelaCheckOut.html">Realizar Check-Out</a>
+				<button onclick= "window.location.href='/checkout'">
+					<a>Realizar Check-Out</a>
 				</button>
 			</section>
 		</main>

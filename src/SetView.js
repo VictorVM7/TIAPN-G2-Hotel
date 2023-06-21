@@ -22,16 +22,21 @@ module.exports = {
     },
     
     ViewTelaMain: (res, FuncLogin, FuncNome) => {
+        let alerta1 = false;
+        let alerta2 = false;
         return res.render('TelaMain', { FuncLogin, FuncNome });
     },
 
     ViewTelaRealizarReserva: (res, FuncLogin, FuncNome) => {
-        let alerta = false;
-        return res.render('TelaRealizarReserva', { FuncLogin, FuncNome, alerta });
+        let alerta1 = false;
+        let alerta2 = false;
+        return res.render('TelaRealizarReserva', { FuncLogin, FuncNome, alerta1, alerta2 });
     },
 
-    ViewTelaVerReserva: (res, FuncLogin, FuncNome) => {
-        return res.render('TelaVerReserva', { FuncLogin, FuncNome });
+    ViewTelaVerReserva: (res, FuncLogin, FuncNome, dados) => {
+        let alerta1 = false;
+        let alerta2 = false;
+        return res.render('TelaVerReserva', { FuncLogin, FuncNome, dados});
     },
 
 } 

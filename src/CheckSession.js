@@ -1,25 +1,27 @@
+global.FuncLogin = null; // Inicializa a variável global com um valor padrão
+
 module.exports = {
+  LoadUser: (req) => {
+    global.FuncLogin = req.session.user;
+    return global.FuncLogin;
+  },
 
-    LoadUser: (req) => {
-        FuncLogin = req.session.user
-        return FuncLogin;
-    },
+  LoadNome: (req) => {
+    global.FuncNome = req.session.nome;
+    return global.FuncNome;
+  },
 
-    LoadNome: (req) => {
-        FuncNome = req.session.nome
-        return FuncNome;
-    },
-    
-    SessionLogin: (req, FuncLogin) => {
-        console.log(FuncLogin);
-        req.session.user = FuncLogin;
-        return FuncLogin;
-    },
+  SessionLogin: (req, FuncLogin) => {
+    console.log(FuncLogin);
+    req.session.user = FuncLogin;
+    global.FuncLogin = FuncLogin;
+    return FuncLogin;
+  },
 
-    SessionNome: (req, FuncNome) => {
-        console.log(FuncNome);
-        req.session.nome = FuncNome;
-        return FuncNome;
-    },
-
-} 
+  SessionNome: (req, FuncNome) => {
+    console.log(FuncNome);
+    req.session.nome = FuncNome;
+    global.FuncNome = FuncNome;
+    return FuncNome;
+  },
+};

@@ -2,7 +2,6 @@
 const Reserva = require('../models/Reserva');
 const Funcionario = require('../models/Funcionario');
 const Cliente = require('../models/Cliente');
-const CheckReserva = require('../CheckReserva');
 const SetView = require('../SetView');
 const { LoadUser, LoadNome } = require('../CheckSession');
 const SetAlert = require('../SetAlert');
@@ -13,11 +12,6 @@ module.exports = {
 
     postReserva: async (req, res) => {
         const { CliCPF, TipoQuarto, Quarto, DataInicio, DataFim } = req.body
-        const funcLogin = req.session.funcLogin;
-        const funcionario = await Funcionario.findOne({
-            where: funcLogin
-        })
-        console.log(funcLogin)
 
         try {
             const cliente = await Cliente.findOne({
@@ -26,7 +20,7 @@ module.exports = {
 
             if (!cliente) {
                 SetAlert.AlertClienteInexistente(res, LoadUser(req), LoadNome(req));
-                res.status(204).end();
+                res.status(204);
             }
             else {
                 const ocupado = await Reserva.findAll({
@@ -40,16 +34,16 @@ module.exports = {
                     }
                 })
 
-                console.log(ocupado)
+                console.log(ocupado.DataInicio)
 
                 let inicio = new Date(DataInicio);
                 let fim = new Date(DataFim);
                 let loop = new Date(inicio);
 
-                if (!ocupado) {
-                    console.log(1)
+                if (!ocupado.length) {
+                    console.log("Cadastrado!")
                     await Reserva.create({
-                        ID_Funcionario: funcionario.ID,
+                        ID_Funcionario: 1,
                         ID_Cliente: cliente.ID,
                         TipoQuarto: TipoQuarto,
                         Quarto: Quarto,
@@ -59,26 +53,30 @@ module.exports = {
                     res.status(204).end()
                 }
                 else {
-                    res.status(200).json({ messagem: `Esse quarto só estará disponível a partir do dia: ${ocupado.DataFim}` })
+                    SetAlert.AlertQuartoOcupado(res, LoadUser(req), LoadNome(req));
+                    res.status(204);
                 }
             }
 
         } catch (error) {
-            res.status(400).json({ message: 'erro no post' })
+            res.status(400).json({ message: 'Erro no método POST de reserva' });
         }
     },
 
     // GET - Retorna todos os usuários cadastrados 
     getAllReservas: async (req, res) => {
         try {
-            const reserva = await Reserva.findAll();
-
-            if (!reserva) {
-                res.status(400).json({ message: "Nenhum usuário encontrado" })
-            } else {
-                res.status(200).json({ reserva })
-            }
-
+            const reserva = await Reserva.findOne();
+            reserva.forEach(reserva => {
+                const dados = {
+                    id: reserva.ID,
+                    quarto: reserva.quarto,
+                    tipo: reserva.TipoQuarto,
+                    dataInicio: reserva.DataInicio,
+                    dataFim: reserva.dataFim          
+                } 
+                SetView.ViewTelaVerReserva(res, LoadUser(req), LoadNome(req), dados)
+            });
         } catch (error) {
             res.status(400).json({ error })
         }
