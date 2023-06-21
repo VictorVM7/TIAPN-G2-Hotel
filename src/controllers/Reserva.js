@@ -68,11 +68,11 @@ module.exports = {
         const { CliCPF, TipoQuarto, Quarto, DataInicio, DataFim } = req.body
 
         try {
-            const reservas = await Reserva.findAll({CliCPF, TipoQuarto, Quarto, DataInicio, DataFim})
+            const reservas = await Reserva.findAll({})
             const dados = reservas.map(reserva => ({
                 id: reserva.ID,
-                quarto: reserva.quarto,
-                tipo: reserva.TipoQuarto,
+                quarto: reserva.TipoQuarto,
+                tipo: reserva.Quarto,
                 dataInicio: reserva.DataInicio,
                 dataFim: reserva.DataFim
             }));
