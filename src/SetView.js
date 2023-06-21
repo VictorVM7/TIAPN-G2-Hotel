@@ -34,8 +34,8 @@ module.exports = {
     },
 
     ViewTelaVerReserva: (res, FuncLogin, FuncNome, dados) => {
-        let alerta1 = false;
-        let alerta2 = false;
+        console.log(dados);
+        const dadosReserva = dados;
         return res.render('TelaVerReserva', { FuncLogin, FuncNome, dados});
     },
 

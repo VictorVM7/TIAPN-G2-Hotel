@@ -16,12 +16,8 @@ ReservaRouter.get("/reserva", function(req, res){
   SetView.ViewTelaRealizarReserva(res, LoadUser(req), LoadNome(req));
 });
 
-ReservaRouter.get("/verReserva", function(req, res){
-  SetView.ViewTelaVerReserva(res, LoadUser(req), LoadNome(req));
-});
-
-// // Rotas
-ReservaRouter.get('/reservas', ReservaController.getAllReservas)
+// Rotas
+ReservaRouter.get('/verReserva', ReservaController.getAllReservas)
 ReservaRouter.post('/reserva', ReservaController.postReserva)
 // ReservaRouter.delete('/', ReservaController.deleteReserva)
 // ReservaRouter.put('/', ReservaController.updateReserva)

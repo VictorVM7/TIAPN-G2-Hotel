@@ -65,20 +65,21 @@ module.exports = {
 
     // GET - Retorna todos os usuários cadastrados 
     getAllReservas: async (req, res) => {
+        const { CliCPF, TipoQuarto, Quarto, DataInicio, DataFim } = req.body
+
         try {
-            const reserva = await Reserva.findOne();
-            reserva.forEach(reserva => {
-                const dados = {
-                    id: reserva.ID,
-                    quarto: reserva.quarto,
-                    tipo: reserva.TipoQuarto,
-                    dataInicio: reserva.DataInicio,
-                    dataFim: reserva.dataFim          
-                } 
-                SetView.ViewTelaVerReserva(res, LoadUser(req), LoadNome(req), dados)
-            });
+            const reservas = await Reserva.findAll({CliCPF, TipoQuarto, Quarto, DataInicio, DataFim})
+            const dados = reservas.map(reserva => ({
+                id: reserva.ID,
+                quarto: reserva.quarto,
+                tipo: reserva.TipoQuarto,
+                dataInicio: reserva.DataInicio,
+                dataFim: reserva.DataFim
+            }));
+            console.log(1);
+            SetView.ViewTelaVerReserva(res, LoadUser(req), LoadNome(req), dados);
         } catch (error) {
-            res.status(400).json({ error })
+            res.status(400).json({ error });
         }
     },
 

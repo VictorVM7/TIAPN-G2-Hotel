@@ -53,7 +53,7 @@
     <main class="table">
         <section class="table__header">
             <h1>Reservas em Andamento</h1>
-            <a href="TelaMain.html">Voltar</a>
+            <a onclick="window.location.href='/menuPrincipal'">Voltar</a>
         </section>
         <section class="table__body">
             <table>
@@ -67,33 +67,16 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td> <%= dados.ID %> </td>
-                        <td> 2 Andar - Quarto 222 </td>
-                        <td>Casal</td>
-                        <td> 25 Maio de 2023 </td>
-                        <td>
-                            <p class="status delivered">Livre</p>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td> 1 </td>
-                        <td> 6 Andar - Quarto 666 </td>
-                        <td>Solteiro</td>
-                        <td> 13 Abril 2023 </td>
-                        <td>
-                            <p class="status pending">Ocupado</p>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td> 1 </td>
-                        <td> 4 Andar - Quarto 444 </td>
-                        <td>Casal</td>
-                        <td> 20 Janeiro de 2023 </td>
-                        <td>
-                            <p class="status end">Finalizada</p>
-                        </td>
-                    </tr>                
+                    <% if (dados) { %>
+                        <% for (var i = 0; i < dados.length; i++) { %>
+                          <tr>
+                            <td> <%= dados[i].id %> </td>
+                            <td> <%= dados[i].quarto %> </td>
+                            <td> <%= dados[i].tipo %> </td>
+                            <td> <%= dados[i].dataInicio %> </td>
+                            <td> <%= dados[i].dataFim %> </td>
+                        </tr>
+                    <% }} %>              
                 </tbody>
             </table>
         </section>
